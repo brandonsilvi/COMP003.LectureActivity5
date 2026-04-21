@@ -9,13 +9,13 @@ namespace COMP003.LectureActivity5.Controllers;
 public class ProductsController : ControllerBase
 {
     [HttpGet]
-    public IActionResult<List<Product>> GetAll()
+    public ActionResult<List<Product>> GetAll()
     {
         return Ok(ProductStore.Products);
     }
 
     [HttpGet("{id}")]
-    public IActionResult<Product> GetById(int id)
+    public ActionResult<Product> GetById(int id)
     {
         var product = ProductStore.Products.FirstOrDefault(p => p.Id == id);
 
@@ -74,7 +74,7 @@ public class ProductsController : ControllerBase
     {
         var names = ProductStore.Products
             .Select(p => p.Name)
-            .ToList()
+            .ToList();
 
         return Ok(names);
     }
